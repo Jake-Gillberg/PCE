@@ -25,7 +25,8 @@
 #'
 #' @export
 packageResults <- function(outputFolder, 
-                           minCellCount = 5) {
+                           minCellCount = 5,
+                           cdmDatabaseName) {
   if(missing(outputFolder)){
     stop('Missing outputFolder...')
   }

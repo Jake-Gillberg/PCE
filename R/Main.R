@@ -229,12 +229,12 @@ execute <- function(connectionDetails,
                                  error = function(e){ParallelLogger::logError(e); return(NULL)})
           
           
-          # if less than 10 outcomes dont run
-          if(sum(population$outcomeCount >0)<10){
-            ParallelLogger::logInfo('Less that 10 outcomes so not running...')
+          # if less than 25 outcomes dont run
+          if(sum(population$outcomeCount >0)<25){
+            ParallelLogger::logInfo('Less that 25 outcomes so not running...')
           }
           
-          if(sum(population$outcomeCount >0)>=10){
+          if(sum(population$outcomeCount >0)>=25){
             
             
             if(!is.null(population)){
@@ -449,8 +449,8 @@ execute <- function(connectionDetails,
   
   if (packageResults) {
     ParallelLogger::logInfo("Packaging results")
-    packageResults(outputFolder = file.path(outputFolder,cdmDatabaseName),
-                   minCellCount = minCellCount)
+    packageResults(outputFolder = file.path(outputFolder, cdmDatabaseName),
+                   minCellCount = minCellCount, cdmDatabaseName = cdmDatabaseName)
   }
   
   # [TODO] add create shiny app
